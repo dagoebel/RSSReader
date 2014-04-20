@@ -85,23 +85,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iut/rssreader/app/MainActivity.java">
+      <file leaf-file-name="BddSqLite.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/sqlite/BddSqLite.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="67" selection-start="983" selection-end="983" vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="1037">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#787#1062#0" expanded="true" />
-                <element signature="e#1051#1052#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CategActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iut/rssreader/app/CategActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="43" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+            <state line="23" column="45" selection-start="854" selection-end="854" vertical-scroll-proportion="0.6718213" vertical-offset="0" max-vertical-offset="697">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,13 +96,66 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <file leaf-file-name="Categorie.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/sqlite/Categorie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="0" selection-start="858" selection-end="858" vertical-scroll-proportion="0.7302405" vertical-offset="0" max-vertical-offset="582">
+            <state line="1" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
               <folding>
-                <element signature="e#433#451#0" expanded="true" />
+                <element signature="e#245#246#0" expanded="true" />
+                <element signature="e#270#271#0" expanded="true" />
+                <element signature="e#303#304#0" expanded="true" />
+                <element signature="e#331#332#0" expanded="true" />
+                <element signature="e#361#362#0" expanded="true" />
+                <element signature="e#387#388#0" expanded="true" />
+                <element signature="e#425#426#0" expanded="true" />
+                <element signature="e#455#456#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CategoriesBdd.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/sqlite/CategoriesBdd.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="35" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="2975">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1282#1283#0" expanded="true" />
+                <element signature="e#1308#1309#0" expanded="true" />
+                <element signature="e#2548#2559#0" expanded="true" />
+                <element signature="e#3102#3110#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FluxRss.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/sqlite/FluxRss.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="0" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+              <folding>
+                <element signature="e#335#336#0" expanded="true" />
+                <element signature="e#360#361#0" expanded="true" />
+                <element signature="e#393#394#0" expanded="true" />
+                <element signature="e#421#422#0" expanded="true" />
+                <element signature="e#451#452#0" expanded="true" />
+                <element signature="e#477#478#0" expanded="true" />
+                <element signature="e#515#516#0" expanded="true" />
+                <element signature="e#545#546#0" expanded="true" />
+                <element signature="e#575#576#0" expanded="true" />
+                <element signature="e#601#602#0" expanded="true" />
+                <element signature="e#639#640#0" expanded="true" />
+                <element signature="e#669#670#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FluxRssBdd.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/sqlite/FluxRssBdd.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="0" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -795,11 +835,17 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/iut/rssreader/app/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/iut/rssreader/app/CategActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sqlite/BddSqLite.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sqlite/FluxRss.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sqlite/FluxRssBdd.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sqlite/Categorie.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sqlite/CategorieBdd.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/sqlite/CategoriesBdd.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="564" />
+    <option name="x" value="571" />
     <option name="width" value="1356" />
     <option name="height" value="1040" />
   </component>
@@ -907,37 +953,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RSSReader" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="RSSReader" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
+              <option name="myItemId" value="sqlite" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1153,7 +1173,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="564" y="0" width="1356" height="1040" extended-state="0" />
+    <frame x="571" y="0" width="1356" height="1040" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -1287,20 +1307,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="41" selection-start="326" selection-end="326" vertical-scroll-proportion="0.23367697" vertical-offset="0" max-vertical-offset="582">
+          <folding>
+            <element signature="e#433#451#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/iut/rssreader/app/CategActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="43" selection-start="314" selection-end="314" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+        <state line="4" column="22" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sqlite/Categorie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="858" selection-end="858" vertical-scroll-proportion="0.7302405" vertical-offset="0" max-vertical-offset="582">
+        <state line="1" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
           <folding>
-            <element signature="e#433#451#0" expanded="true" />
+            <element signature="e#245#246#0" expanded="true" />
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#303#304#0" expanded="true" />
+            <element signature="e#331#332#0" expanded="true" />
+            <element signature="e#361#362#0" expanded="true" />
+            <element signature="e#387#388#0" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sqlite/CategoriesBdd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="35" selection-start="226" selection-end="226" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2975">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1282#1283#0" expanded="true" />
+            <element signature="e#1308#1309#0" expanded="true" />
+            <element signature="e#2548#2559#0" expanded="true" />
+            <element signature="e#3102#3110#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sqlite/FluxRss.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="0" selection-start="780" selection-end="780" vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="884">
+          <folding>
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#393#394#0" expanded="true" />
+            <element signature="e#421#422#0" expanded="true" />
+            <element signature="e#451#452#0" expanded="true" />
+            <element signature="e#477#478#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sqlite/FluxRssBdd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="637" selection-end="637" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/sqlite/BddSqLite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="45" selection-start="854" selection-end="854" vertical-scroll-proportion="0.6718213" vertical-offset="0" max-vertical-offset="697">
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

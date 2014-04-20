@@ -91,27 +91,56 @@ public class CategoriesBdd {
     }
 
 
+
     /**
      * Recupere un liste des categories de la bdd
      * @return
      */
-    public List<Categorie> getCategories(){
+    public ArrayList<Categorie> getCategories(){
 
-        List<Categorie> categories = new ArrayList<Categorie>();
+        ArrayList<Categorie> categories = new ArrayList<Categorie>();
 
         Cursor c = bdd.query(TABLE_CATEGORIES, new String[] {COL_ID, COL_NOM}, null, null, null, null, null);
 
-        Categorie categorie = new Categorie();
+        Categorie categorie;
 
         while(c.moveToNext()){
-            categorie =  cursorToCategorie(c);
+            categorie = cursorToCategorie(c);
             categories.add(categorie);
         }
-
-        // Log.v(TAG, categories.toString());
+        c.close();
+        //si aucun élément n'a été retourné dans la requête, categories est vide
 
         return categories;
     }
+
+    public Categorie getCategorieWithNom(String nom){
+        Cursor c = bdd.query(TABLE_CATEGORIES, new String[] {COL_ID, COL_NOM}, COL_NOM + " LIKE \"" + nom +"\"", null, null, null, null);
+        Categorie categorie;
+        if(c.moveToFirst()) {
+            categorie = cursorToCategorie(c);
+        }
+        else {
+            //si aucun élément n'a été retourné dans la requête, on renvoie null
+            categorie = null;
+        }
+        c.close();
+        return categorie;
+    }
+
+
+    // permet de convertir un cursor en une categorie
+    private Categorie cursorToCategorie(Cursor c){
+        //On créé un livre
+        Categorie categorie = new Categorie();
+        //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
+        categorie.setId(c.getInt(NUM_COL_ID));
+        categorie.setNom(c.getString(NUM_COL_NOM));
+
+        //On retourne la categorie
+        return categorie;
+    }
+
 
 
     /**
@@ -133,38 +162,4 @@ public class CategoriesBdd {
         return noms;
     }
 
-
-    /**
-     * Recupere une categorie grâce au nom
-     * @param nom
-     * @return
-     */
-    public Categorie getCategorieWithNom(String nom){
-        Cursor c = bdd.query(TABLE_CATEGORIES, new String[] {COL_ID, COL_NOM}, COL_NOM + " LIKE \"" + nom +"\"", null, null, null, null);
-        return cursorToCategorie(c);
-    }
-
-    /**
-     * Convertir un cursor en Categorie
-     * @param c
-     * @return
-     */
-    private Categorie cursorToCategorie(Cursor c){
-        //si aucun élément n'a été retourné dans la requête, on renvoie null
-        if (c.getCount() == 0)
-            return null;
-
-        //Sinon on se place sur le premier élément
-        c.moveToFirst();
-        //On créé un livre
-        Categorie categorie = new Categorie();
-        //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
-        categorie.setId(c.getInt(NUM_COL_ID));
-        categorie.setNom(c.getString(NUM_COL_NOM));
-        //On ferme le cursor
-        c.close();
-
-        //On retourne la categorie
-        return categorie;
-    }
 }

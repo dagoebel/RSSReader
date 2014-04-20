@@ -6,6 +6,10 @@ import android.view.*;
 import android.content.Intent;
 import android.widget.*;
 
+import sqlite.Categorie;
+import sqlite.CategoriesBdd;
+import java.util.*;
+import android.util.*;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -14,6 +18,30 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+        // Instance de la classe CategoriesBdd
+        CategoriesBdd categoriesBdd = new CategoriesBdd(this);
+
+        // création des categories par defaut (utiliser pour le test)
+        Categorie categorieAutre = new Categorie("Autre");
+
+        categoriesBdd.open();
+        // categoriesBdd.insertCategorie(categorieAutre); // commenter la ligne apres la 1ere execution
+
+        List<Categorie> categories = categoriesBdd.getCategories(); // recupere une liste des categories
+        List<String> nomsCateg = categoriesBdd.getNoms();   // recupere une liste de nom des categories
+
+        Categorie categorieFromBdd = categoriesBdd.getCategorieWithNom(categorieAutre.getNom());
+        //Si une categorie est retournée
+        if(categorieFromBdd != null){
+            Log.d(TAG, categorieFromBdd.toString());
+        }
+
+        categoriesBdd.close();
+
+
 
         /* ============================================
             Declaration des elements du layout
@@ -28,6 +56,12 @@ public class MainActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
+        // declaration du spinner Categorie
+        final Spinner spinnerCategorie = (Spinner) findViewById(R.id.spinnerCateg);
+        ArrayAdapter<String> adapterCateg = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nomsCateg);
+        adapterCateg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategorie.setAdapter(adapterCateg);
 
     }
 

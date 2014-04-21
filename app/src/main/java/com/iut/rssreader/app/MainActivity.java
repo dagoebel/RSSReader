@@ -5,9 +5,10 @@ import android.os.Bundle;
 import android.view.*;
 import android.content.Intent;
 import android.widget.*;
-
 import sqlite.Categorie;
 import sqlite.CategoriesBdd;
+import sqlite.FluxRss;
+
 import java.util.*;
 import android.util.*;
 
@@ -57,11 +58,29 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+
+        /* A remplacer par une list
         // declaration du spinner Categorie
         final Spinner spinnerCategorie = (Spinner) findViewById(R.id.spinnerCateg);
         ArrayAdapter<String> adapterCateg = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nomsCateg);
         adapterCateg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategorie.setAdapter(adapterCateg);
+        */
+
+        // declaration de la listeView categorie
+        final ListView listCategories = (ListView) findViewById(R.id.lstCateg);
+        listCategories.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,nomsCateg));   // remplis la liste avec les categories
+        listCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View view, int position, long arg3){
+                Intent intent = new Intent(MainActivity.this, FluxrssActivity.class);
+                startActivity(intent);
+                // a finir pour faire passer en argument le nom de la categ selectionné
+            }
+        });
+
+
 
     }
 

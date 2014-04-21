@@ -20,6 +20,14 @@
             android:name="com.iut.rssreader.app.CategActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="com.iut.rssreader.app.FluxrssActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.iut.rssreader.app.GestionfluxrssActivity"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

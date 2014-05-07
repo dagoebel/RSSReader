@@ -75,16 +75,10 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Modifier"
-                    android:id="@+id/btnModifier" />
-
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Slider à gauche pour supprimer une catégorie"
+                    android:text="clic long sur une categorie pour supprimer ou modifier"
                     android:id="@+id/textView2" />
 
             </LinearLayout>

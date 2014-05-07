@@ -77,6 +77,7 @@ public class MainActivity extends ActionBarActivity {
                 Intent intent = new Intent(MainActivity.this, FluxrssActivity.class);
                 startActivity(intent);
                 // a finir pour faire passer en argument le nom de la categ selectionné
+                // ou id( de preference)
             }
         });
 

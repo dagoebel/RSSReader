@@ -12,9 +12,10 @@ public class BddSqLite extends SQLiteOpenHelper {
     private static final String TABLE_CATEGORIES = "table_categories";
     private static final String COL_ID = "ID";
     private static final String COL_NOM = "Nom";
+    private static final String COL_DESCRIPTION = "Description";
 
     private static final String CREATE_BDD = "CREATE TABLE " + TABLE_CATEGORIES + " ("
-            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NOM + " TEXT NOT NULL);";
+            + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_NOM + " TEXT NOT NULL, " + COL_DESCRIPTION + " TEXT NULL);";
 
     public BddSqLite(Context context, String name, CursorFactory factory, int version) {
         super(context, name, factory, version);

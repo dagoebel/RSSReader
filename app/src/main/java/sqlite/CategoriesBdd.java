@@ -21,6 +21,8 @@ public class CategoriesBdd {
     private static final int NUM_COL_ID = 0;
     private static final String COL_NOM = "Nom";
     private static final int NUM_COL_NOM = 1;
+    private static final String COL_DESCRIPTION = "Description";
+    private static final int NUM_COL_DESCRIPTION = 2;
 
     private SQLiteDatabase bdd;
 
@@ -64,6 +66,7 @@ public class CategoriesBdd {
         ContentValues values = new ContentValues();
         //on ajoute une valeur associé
         values.put(COL_NOM, categorie.getNom());
+        values.put(COL_DESCRIPTION, categorie.getDescription());
         //on insère l'objet dans la BDD via le ContentValues
         return bdd.insert(TABLE_CATEGORIES, null, values);
     }
@@ -77,6 +80,7 @@ public class CategoriesBdd {
     public int updateCategorie(int id, Categorie categorie){
         ContentValues values = new ContentValues();
         values.put(COL_NOM, categorie.getNom());
+        values.put(COL_DESCRIPTION, categorie.getDescription());
         return bdd.update(TABLE_CATEGORIES, values, COL_ID + " = " +id, null);
     }
 
@@ -100,7 +104,7 @@ public class CategoriesBdd {
 
         ArrayList<Categorie> categories = new ArrayList<Categorie>();
 
-        Cursor c = bdd.query(TABLE_CATEGORIES, new String[] {COL_ID, COL_NOM}, null, null, null, null, null);
+        Cursor c = bdd.query(TABLE_CATEGORIES, new String[] {COL_ID, COL_NOM, COL_DESCRIPTION}, null, null, null, null, null);
 
         Categorie categorie;
 
@@ -115,7 +119,7 @@ public class CategoriesBdd {
     }
 
     public Categorie getCategorieWithNom(String nom){
-        Cursor c = bdd.query(TABLE_CATEGORIES, new String[] {COL_ID, COL_NOM}, COL_NOM + " LIKE \"" + nom +"\"", null, null, null, null);
+        Cursor c = bdd.query(TABLE_CATEGORIES, new String[] {COL_ID, COL_NOM, COL_DESCRIPTION}, COL_NOM + " LIKE \"" + nom +"\"", null, null, null, null);
         Categorie categorie;
         if(c.moveToFirst()) {
             categorie = cursorToCategorie(c);
@@ -136,6 +140,7 @@ public class CategoriesBdd {
         //on lui affecte toutes les infos grâce aux infos contenues dans le Cursor
         categorie.setId(c.getInt(NUM_COL_ID));
         categorie.setNom(c.getString(NUM_COL_NOM));
+        categorie.setDescription(c.getString(NUM_COL_DESCRIPTION));
 
         //On retourne la categorie
         return categorie;
@@ -150,7 +155,7 @@ public class CategoriesBdd {
     public List<String> getNoms(){
         List<String> noms = new ArrayList<String>();
 
-        Cursor c = bdd.query(TABLE_CATEGORIES, new String[] {COL_ID, COL_NOM}, null, null, null, null, null);
+        Cursor c = bdd.query(TABLE_CATEGORIES, new String[] {COL_ID, COL_NOM, COL_DESCRIPTION}, null, null, null, null, null);
 
         Categorie categorie = new Categorie();
 

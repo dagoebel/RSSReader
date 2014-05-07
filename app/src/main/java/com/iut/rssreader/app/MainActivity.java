@@ -1,5 +1,6 @@
 package com.iut.rssreader.app;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.*;
@@ -12,7 +13,7 @@ import sqlite.FluxRss;
 import java.util.*;
 import android.util.*;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     public final static String TAG = "ActionBarActivity";
     @Override
@@ -26,10 +27,10 @@ public class MainActivity extends ActionBarActivity {
         CategoriesBdd categoriesBdd = new CategoriesBdd(this);
 
         // création des categories par defaut (utiliser pour le test)
-        Categorie categorieAutre = new Categorie("Autre");
+        Categorie categorieAutre = new Categorie("Autre", "categorie de test");
 
         categoriesBdd.open();
-        // categoriesBdd.insertCategorie(categorieAutre); // commenter la ligne apres la 1ere execution
+        categoriesBdd.insertCategorie(categorieAutre); // commenter la ligne apres la 1ere execution
 
         List<Categorie> categories = categoriesBdd.getCategories(); // recupere une liste des categories
         List<String> nomsCateg = categoriesBdd.getNoms();   // recupere une liste de nom des categories

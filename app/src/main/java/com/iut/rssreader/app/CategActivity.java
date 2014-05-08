@@ -42,7 +42,7 @@ public class CategActivity extends Activity{
 
         categoriesBdd.open();
 
-        final ArrayList<Categorie> categories = categoriesBdd.getCategories(); // recupere une liste des categories
+        final List<Categorie> categories = MainActivity.getCategories(); // recupere une liste des categories
         List<String> nomsCateg = categoriesBdd.getNoms();   // recupere une liste de nom des categories
 
         categoriesBdd.close();

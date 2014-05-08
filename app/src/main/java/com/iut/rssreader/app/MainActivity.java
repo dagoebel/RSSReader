@@ -16,6 +16,9 @@ import android.util.*;
 public class MainActivity extends Activity {
 
     public final static String TAG = "ActionBarActivity";
+    private static List<Categorie> categories;
+
+    private ArrayAdapter<Categorie> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +45,7 @@ public class MainActivity extends Activity {
 
         /* recuperation des categories de la bdd */
         categoriesBdd.open();
-        final List<Categorie> categories = categoriesBdd.getCategories(); // recupere une liste des categories
+        categories = categoriesBdd.getCategories(); // recupere une liste des categories
         // Categorie categorieFromBdd = categoriesBdd.getCategorieWithNom(categorieAutre.getNom());
         categoriesBdd.close();
 
@@ -64,7 +67,7 @@ public class MainActivity extends Activity {
 
         // declaration de la listeView categorie
         final ListView listCategories = (ListView) findViewById(R.id.lstCateg);
-        final ArrayAdapter<Categorie> adapter = new ArrayAdapter<Categorie>(this, android.R.layout.simple_list_item_1, categories);
+        adapter = new ArrayAdapter<Categorie>(this, android.R.layout.simple_list_item_1, categories);
         listCategories.setAdapter(adapter);
 
         listCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -108,8 +111,13 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public static List<Categorie> getCategories() {
+        return categories;
+    }
+
     @Override
     protected void onRestart() {
+        adapter.notifyDataSetChanged();
         super.onRestart();
     }
 }

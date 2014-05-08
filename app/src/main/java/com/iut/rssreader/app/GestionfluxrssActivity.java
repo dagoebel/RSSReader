@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.*;
 import android.widget.*;
 
+import sqlite.Categorie;
 import sqlite.CategoriesBdd;
 import java.util.*;
 
@@ -25,9 +26,8 @@ public class GestionfluxrssActivity extends ActionBarActivity {
             Gestion des données de la bdd
          ============================================ */
         categoriesBdd.open();
-
-        List<String> nomsCateg = categoriesBdd.getNoms();
-
+        // List<String> nomsCateg = categoriesBdd.getNoms();
+        final List<Categorie> categories = categoriesBdd.getCategories();
         categoriesBdd.close();
 
 
@@ -37,10 +37,15 @@ public class GestionfluxrssActivity extends ActionBarActivity {
 
         // declaration du spinner Categorie
         final Spinner spinnerCategorie = (Spinner) findViewById(R.id.spinnerCateg);
+
+        final ArrayAdapter<Categorie> adapterCateg = new ArrayAdapter<Categorie>(this, android.R.layout.simple_list_item_1, categories);
+        adapterCateg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategorie.setAdapter(adapterCateg);
+        /*
         ArrayAdapter<String> adapterCateg = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nomsCateg);
         adapterCateg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategorie.setAdapter(adapterCateg);
-
+        */
 
 
     }

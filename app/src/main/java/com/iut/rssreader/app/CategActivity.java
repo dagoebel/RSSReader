@@ -53,12 +53,8 @@ public class CategActivity extends Activity{
         ============================================= */
 
         // declaration de la ViewList
-        /*
         final ListView lstCateg = (ListView) findViewById(R.id.lstCateg);
-        lstCateg.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,nomsCateg));
-        */
-        final ListView lstCateg = (ListView) findViewById(R.id.lstCateg);
-        ArrayAdapter<Categorie> adapter = new ArrayAdapter<Categorie>(this, android.R.layout.simple_list_item_1, categories);
+        final ArrayAdapter<Categorie> adapter = new ArrayAdapter<Categorie>(this, android.R.layout.simple_list_item_1, categories);
         lstCateg.setAdapter(adapter);
 
 
@@ -67,6 +63,8 @@ public class CategActivity extends Activity{
 
                 // recuperation de l'objet
                 final Categorie categSelected = categories.get(position);
+
+                Log.d(TAG, String.valueOf(categSelected.getId()));
 
                 // popup suppression / modification
                 final Dialog dialog = new Dialog(CategActivity.this);
@@ -103,6 +101,8 @@ public class CategActivity extends Activity{
                                 categoriesBdd.close();
 
                                 // a faire: rafraichir les layouts
+                                adapter.notifyDataSetChanged();
+
                                 editCategDialog.cancel();
                                 Toast.makeText(CategActivity.this, "modification terminé !", Toast.LENGTH_SHORT).show(); // si pas erreur
                             }
@@ -121,6 +121,7 @@ public class CategActivity extends Activity{
                         categoriesBdd.open();
                         categoriesBdd.removeCategorieWithID(categSelected.getId());
                         // a faire: rafraichir les layouts
+                        adapter.notifyDataSetChanged();
                         categoriesBdd.close();
                         dialog.cancel();
                         Toast.makeText(CategActivity.this, "suppression terminé !", Toast.LENGTH_SHORT).show(); // si pas erreur
@@ -140,7 +141,7 @@ public class CategActivity extends Activity{
         lstCateg.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long arg3) {
-                Log.d(TAG, String.valueOf(categories.get(position)));
+                Log.d(TAG, categories.get(position).getDescription());
             }
         });
 

@@ -26,23 +26,25 @@ public class MainActivity extends Activity {
         // Instance de la classe CategoriesBdd
         CategoriesBdd categoriesBdd = new CategoriesBdd(this);
 
-        // création des categories par defaut (utiliser pour le test)
-        Categorie categorieAutre = new Categorie("Autre", "categorie de test");
+        /* ==================================================================
+            A executer une seul fois (commenter
+            a faire: faire une condition pour le faire automatiquement
+        ====================================================================
+        Categorie categorie1 = new Categorie("Autre", "flux non triés");
+        Categorie categorie2 = new Categorie("Test", "categorie de test");
 
         categoriesBdd.open();
-        categoriesBdd.insertCategorie(categorieAutre); // commenter la ligne apres la 1ere execution
-
-        List<Categorie> categories = categoriesBdd.getCategories(); // recupere une liste des categories
-        List<String> nomsCateg = categoriesBdd.getNoms();   // recupere une liste de nom des categories
-
-        Categorie categorieFromBdd = categoriesBdd.getCategorieWithNom(categorieAutre.getNom());
-        //Si une categorie est retournée
-        if(categorieFromBdd != null){
-            Log.d(TAG, categorieFromBdd.toString());
-        }
-
+        categoriesBdd.insertCategorie(categorie1);
+        categoriesBdd.insertCategorie(categorie2);
         categoriesBdd.close();
+        */
 
+
+        /* recuperation des categories de la bdd */
+        categoriesBdd.open();
+        final List<Categorie> categories = categoriesBdd.getCategories(); // recupere une liste des categories
+        // Categorie categorieFromBdd = categoriesBdd.getCategorieWithNom(categorieAutre.getNom());
+        categoriesBdd.close();
 
 
         /* ============================================
@@ -60,25 +62,24 @@ public class MainActivity extends Activity {
         });
 
 
-        /* A remplacer par une list
-        // declaration du spinner Categorie
-        final Spinner spinnerCategorie = (Spinner) findViewById(R.id.spinnerCateg);
-        ArrayAdapter<String> adapterCateg = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, nomsCateg);
-        adapterCateg.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCategorie.setAdapter(adapterCateg);
-        */
-
         // declaration de la listeView categorie
         final ListView listCategories = (ListView) findViewById(R.id.lstCateg);
-        listCategories.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,nomsCateg));   // remplis la liste avec les categories
+        final ArrayAdapter<Categorie> adapter = new ArrayAdapter<Categorie>(this, android.R.layout.simple_list_item_1, categories);
+        listCategories.setAdapter(adapter);
+
         listCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> arg0, View view, int position, long arg3){
+                // erreur : renvois null
+                Categorie categSelected = categories.get(position);
+                int categIdSelected = categSelected.getId(); // recupere l'id de la categorie selectionné
+
+                Log.d(TAG, String.valueOf(categIdSelected));
+
                 Intent intent = new Intent(MainActivity.this, FluxrssActivity.class);
+                intent.putExtra("IDSELECTED", categIdSelected); // passage de l'id de la categorie au layout
                 startActivity(intent);
-                // a finir pour faire passer en argument le nom de la categ selectionné
-                // ou id( de preference)
             }
         });
 
@@ -107,4 +108,8 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
 }

@@ -15,8 +15,9 @@ public class FluxRssBdd {
     private static final int NUM_COL_ID = 0;
     private static final String COL_NOM = "Nom";
     private static final int NUM_COL_NOM = 1;
-    private static final String COL_URL = "Nom";
+    private static final String COL_URL = "Url";
     private static final int NUM_COL_URL = 2;
+    private static final String COL_CONTENU = "Contenu";
+    private static final int NUM_COL_CONTENU = 3;
 
-    // sauvegarder le contenu ou juste l'url ?
 }

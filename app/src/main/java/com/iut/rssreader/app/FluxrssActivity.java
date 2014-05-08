@@ -1,16 +1,16 @@
 package com.iut.rssreader.app;
 
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 /**
  * Created by corentin on 21/04/14.
  */
-public class FluxrssActivity extends ActionBarActivity {
+public class FluxrssActivity extends Activity {
 
     public final static String TAG = "ActionBarActivity";
     @Override
@@ -33,5 +33,14 @@ public class FluxrssActivity extends ActionBarActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            Log.d(TAG, String.valueOf(extras.getInt("IDSELECTED")));
+        }
     }
 }

@@ -38,11 +38,11 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
-                <Button
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Catégorie"
-                    android:id="@+id/btnCategorie" />
+                    android:layout_height="match_parent"
+                    android:text="clic long sur la catégorie pour la modifier ou supprimmer"
+                    android:id="@+id/textView" />
             </LinearLayout>
 
         </LinearLayout>

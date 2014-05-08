@@ -1,5 +1,6 @@
 package com.iut.rssreader.app;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.*;
@@ -12,13 +13,15 @@ import java.util.*;
 /**
  * Created by corentin on 21/04/14.
  */
-public class GestionfluxrssActivity extends ActionBarActivity {
+public class AddfluxrssActivity extends ActionBarActivity {
     public final static String TAG = "ActionBarActivity";
+
+    private MenuItem itemAccueil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gestionfluxrss);
+        setContentView(R.layout.activity_addfluxrss);
 
         CategoriesBdd categoriesBdd = new CategoriesBdd(this);
 
@@ -50,11 +53,11 @@ public class GestionfluxrssActivity extends ActionBarActivity {
 
     }
 
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        itemAccueil = (MenuItem) findViewById(R.id.action_accueil);
 
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.accueil, menu);
         return true;
     }
 
@@ -64,11 +67,15 @@ public class GestionfluxrssActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.action_ajout_categorie:
+                //do something
+                Intent intentAccueil = new Intent(AddfluxrssActivity.this, MainActivity.class);
+                startActivity(intentAccueil);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+
     }
-
-
 }

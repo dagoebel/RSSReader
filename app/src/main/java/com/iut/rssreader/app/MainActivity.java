@@ -1,6 +1,7 @@
 package com.iut.rssreader.app;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.*;
@@ -19,6 +20,10 @@ public class MainActivity extends Activity {
     private static List<Categorie> categories;
 
     private ArrayAdapter<Categorie> adapter;
+
+    private MenuItem itemAjoutCategorie;
+    private MenuItem itemAjoutFluxRss;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +32,7 @@ public class MainActivity extends Activity {
 
 
         // Instance de la classe CategoriesBdd
-        CategoriesBdd categoriesBdd = new CategoriesBdd(this);
+        final CategoriesBdd categoriesBdd = new CategoriesBdd(this);
 
         /* ==================================================================
             A executer une seul fois (commenter
@@ -54,21 +59,87 @@ public class MainActivity extends Activity {
             Declaration des elements du layout
         ============================================= */
 
-        // declaration du button Categorie
-        final Button btnCategorie = (Button) findViewById(R.id.btnCategorie);
-        btnCategorie.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {   // au clic on lance CategActivity
-                Intent intent = new Intent(MainActivity.this, CategActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
         // declaration de la listeView categorie
         final ListView listCategories = (ListView) findViewById(R.id.lstCateg);
         adapter = new ArrayAdapter<Categorie>(this, android.R.layout.simple_list_item_1, categories);
         listCategories.setAdapter(adapter);
+
+
+
+
+        listCategories.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            public boolean onItemLongClick(AdapterView<?> arg0, View view, int position, long arg3) {
+
+                // recuperation de l'objet
+                final Categorie categSelected = categories.get(position);
+
+                Log.d(TAG, String.valueOf(categSelected.getId()));
+
+                // popup suppression / modification
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setContentView(R.layout.categ_dialog);
+                dialog.setTitle("catégorie: " + categSelected.getNom()); // a faire: get nom de la categorie
+
+                Button btnModifier = (Button) dialog.findViewById(R.id.dialogModifier);
+                btnModifier.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+
+                        /* ===== popup modification ===== */
+                        final Dialog editCategDialog = new Dialog(MainActivity.this);
+                        editCategDialog.setContentView(R.layout.categ_modifdialog);
+                        editCategDialog.setTitle("modification de la catégorie");
+                        final EditText nomCateg = (EditText) editCategDialog.findViewById(R.id.txtNomCateg);
+                        final EditText descriptionCateg = (EditText) editCategDialog.findViewById(R.id.txtDescriptionCateg);
+                        nomCateg.setText(categSelected.getNom()); // a faire
+                        descriptionCateg.setText(categSelected.getDescription()); // a faire
+
+
+                        Button btnModifCateg = (Button) editCategDialog.findViewById(R.id.btnModif);
+                        btnModifCateg.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Log.d(TAG, "Categorie avant: " + categSelected.toString());
+                                categSelected.setNom(nomCateg.getText().toString());
+                                categSelected.setDescription(descriptionCateg.getText().toString());
+                                Log.d(TAG, "Categorie apres modif: " + categSelected.toString());
+                                // update
+                                categoriesBdd.open();
+                                categoriesBdd.updateCategorie(categSelected.getId(), categSelected);
+                                categoriesBdd.close();
+
+                                // a faire: rafraichir les layouts
+                                adapter.notifyDataSetChanged();
+
+                                editCategDialog.cancel();
+                                Toast.makeText(MainActivity.this, "modification terminé !", Toast.LENGTH_SHORT).show(); // si pas erreur
+                            }
+                        });
+                        editCategDialog.show();
+                        /* ===== FIN popup modification ===== */
+                    }
+                });
+
+                Button btnSupprimmer = (Button) dialog.findViewById(R.id.dialogSupprimmer);
+                btnSupprimmer.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // suppression
+                        // recuperer l'id de la categ
+                        categoriesBdd.open();
+                        categoriesBdd.removeCategorieWithID(categSelected.getId());
+                        // a faire: rafraichir les layouts
+                        adapter.notifyDataSetChanged();
+                        categoriesBdd.close();
+                        dialog.cancel();
+                        Toast.makeText(MainActivity.this, "suppression terminé !", Toast.LENGTH_SHORT).show(); // si pas erreur
+                    }
+                });
+                dialog.show();
+                return false;
+            }
+        });
 
         listCategories.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -88,11 +159,14 @@ public class MainActivity extends Activity {
 
 
 
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        itemAjoutCategorie = (MenuItem) findViewById(R.id.action_ajout_categorie);
+        itemAjoutFluxRss = (MenuItem) findViewById(R.id.action_ajout_fluxrss);
 
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -105,10 +179,21 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id){
+            case R.id.action_ajout_categorie:
+                //do something
+                Intent intentAddCategorie = new Intent(MainActivity.this, AddcategorieActivity.class);
+                startActivity(intentAddCategorie);
+                return true;
+            case R.id.action_ajout_fluxrss:
+                //do something
+                Intent intentAddFluxRss = new Intent(MainActivity.this, AddfluxrssActivity.class);
+                startActivity(intentAddFluxRss);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+
     }
 
     public static List<Categorie> getCategories() {

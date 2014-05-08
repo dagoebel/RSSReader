@@ -25,9 +25,14 @@
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name="com.iut.rssreader.app.GestionfluxrssActivity"
-            android:label="@string/app_name" >
+            android:name=".AddfluxrssActivity"
+            android:label="Ajout flux RSS" >
         </activity>
+        <activity
+            android:name=".AddcategorieActivity"
+            android:label="Ajout categorie" >
+        </activity>
+
     </application>
 
 </manifest>

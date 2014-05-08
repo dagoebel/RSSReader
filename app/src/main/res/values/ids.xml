@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="action_ajout_fluxrss" type="id">Ajouter un flux Rss</item>
+    <item name="action_accueil" type="id">Accueil</item>
+    <item name="action_ajout_categorie" type="id">Ajouter une catégorie</item>
+</resources>

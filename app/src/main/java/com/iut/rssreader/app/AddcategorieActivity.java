@@ -1,19 +1,21 @@
 package com.iut.rssreader.app;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.List;
+
+import sqlite.Categorie;
+import sqlite.CategoriesBdd;
 
 /**
- * Created by corentin on 21/04/14.
+ * Created by barre on 08/05/2014.
  */
-public class FluxrssActivity extends Activity {
-
+public class AddcategorieActivity  extends ActionBarActivity {
     public final static String TAG = "ActionBarActivity";
 
     private MenuItem itemAccueil;
@@ -21,23 +23,25 @@ public class FluxrssActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fluxrss);
+        setContentView(R.layout.activity_addcateg);
 
+        CategoriesBdd categoriesBdd = new CategoriesBdd(this);
+
+        /* ============================================
+            Gestion des données de la bdd
+         ============================================ */
+        categoriesBdd.open();
+        // List<String> nomsCateg = categoriesBdd.getNoms();
+        final List<Categorie> categories = categoriesBdd.getCategories();
+        categoriesBdd.close();
 
         /* ============================================
             Declaration des elements du layout
         ============================================= */
+        TextView nomCategorie = (TextView) findViewById(R.id.txtNomCateg);
+        TextView descriptionCategorie = (TextView) findViewById(R.id.txtDescriptionCateg);
 
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            Log.d(TAG, String.valueOf(extras.getInt("IDSELECTED")));
-        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -57,7 +61,7 @@ public class FluxrssActivity extends Activity {
         switch (id){
             case R.id.action_ajout_categorie:
                 //do something
-                Intent intentAccueil = new Intent(FluxrssActivity.this, MainActivity.class);
+                Intent intentAccueil = new Intent(AddcategorieActivity.this, MainActivity.class);
                 startActivity(intentAccueil);
                 return true;
             default:

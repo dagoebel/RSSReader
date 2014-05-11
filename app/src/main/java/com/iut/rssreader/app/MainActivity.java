@@ -109,11 +109,10 @@ public class MainActivity extends Activity {
                                 categoriesBdd.updateCategorie(categSelected.getId(), categSelected);
                                 categoriesBdd.close();
 
-                                // a faire: rafraichir les layouts
-                                adapter.notifyDataSetChanged();
-
                                 editCategDialog.cancel();
-                                Toast.makeText(MainActivity.this, "modification terminé !", Toast.LENGTH_SHORT).show(); // si pas erreur
+                                adapter.notifyDataSetChanged(); // celui ci fonctionne
+
+                                Toast.makeText(MainActivity.this, "modification terminé !", Toast.LENGTH_SHORT).show(); // a faire: si pas erreur
                             }
                         });
                         editCategDialog.show();
@@ -129,15 +128,14 @@ public class MainActivity extends Activity {
                         // recuperer l'id de la categ
                         categoriesBdd.open();
                         categoriesBdd.removeCategorieWithID(categSelected.getId());
-                        // a faire: rafraichir les layouts
-                        adapter.notifyDataSetChanged();
                         categoriesBdd.close();
                         dialog.cancel();
-                        Toast.makeText(MainActivity.this, "suppression terminé !", Toast.LENGTH_SHORT).show(); // si pas erreur
+                        adapter.notifyDataSetChanged();
+                        Toast.makeText(MainActivity.this, "suppression terminé !", Toast.LENGTH_SHORT).show(); // a faire: si pas erreur
                     }
                 });
                 dialog.show();
-                return false;
+                return true;
             }
         });
 
